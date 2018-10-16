@@ -1,6 +1,8 @@
-export default ({router}) => {
-    if (process.env.NODE_ENV === 'production' && GTM_ID && typeof window !== 'undefined') {
+import GtmPlugin from './GtmPlugin'
 
+export default ({router, Vue}) => {
+
+    if (process.env.NODE_ENV === 'production' && GTM_ID && typeof window !== 'undefined') {
         (function (w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
@@ -14,5 +16,14 @@ export default ({router}) => {
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', GTM_ID);
+
+        Vue.prototype.$gtm = Vue.gtm = new GtmPlugin();
+
+        /*
+        router.afterEach(function (to) {
+            Vue.prototype.$gtm.trackView(to.name, to.fullPath);
+        })
+        */
     }
+
 }

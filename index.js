@@ -8,7 +8,8 @@ module.exports = (options = {}, context) => ({
         return {GTM_ID}
     },
 
+
     enhanceAppFiles: [
         path.resolve(__dirname, 'inject.js')
-    ]
-})
+    ],
+});
