@@ -1,4 +1,4 @@
-export default class AnalyticsPlugin {
+export default class GtmPlugin {
     trackView(screenName, path) {
         let dataLayer = (window.dataLayer = window.dataLayer || []);
         dataLayer.push({
