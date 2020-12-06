@@ -19,11 +19,9 @@ export default ({router, Vue}) => {
 
         Vue.prototype.$gtm = Vue.gtm = new GtmPlugin();
 
-        /*
         router.afterEach(function (to) {
             Vue.prototype.$gtm.trackView(to.name, to.fullPath);
         })
-        */
     }
 
 }
