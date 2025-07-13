@@ -14,7 +14,10 @@
     "documentation",
     "vue",
     "vuepress",
-    "generator"
+    "generator",
+    "google-tag-manager",
+    "gtm",
+    "analytics"
   ],
   "author": "Ömer Büyükçelik <omerbuyukcelik@gmail.com>",
   "license": "MIT",

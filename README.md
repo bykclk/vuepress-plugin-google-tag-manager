@@ -27,7 +27,17 @@ module.exports = {
 - Type: `string`
 - Default: `undefined`
 
-Provide the Google Tag Manager ID to enable integration.
+Provide the Google Tag Manager ID to enable integration. Must follow the format `GTM-XXXXXXX`.
+
+```javascript
+module.exports = {
+  plugins: [
+    ['vuepress-plugin-google-tag-manager', {
+      gtm: 'GTM-XXXXXXX'
+    }]
+  ] 
+}
+```
 
 ## Documentation
 
@@ -61,7 +71,7 @@ export default {
 
 The passed variables are mapped with GTM data layer as follows
 
-```
+```javascript
 dataLayer.push({
 	'event': event || 'interaction',
 	'target': category,
@@ -72,3 +82,20 @@ dataLayer.push({
 	...rest
 });
 ```
+
+For page views:
+```javascript
+dataLayer.push({
+	'event': 'content-view',
+	'content-name': path,
+	'screen-name': screenName || path
+});
+```
+
+## Error Handling
+
+The plugin includes built-in error handling and validation:
+- GTM ID format validation (must be GTM-XXXXXXX)
+- Graceful fallback when GTM fails to load
+- Parameter validation for tracking methods
+- Console warnings for invalid usage
